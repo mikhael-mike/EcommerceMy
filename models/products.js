@@ -8,6 +8,7 @@
 //   "products.json"
 // );
 
+const mongoDb = require('mongodb')
 const getDb = require("../utils/database").getDb;
 
 class Product {
@@ -50,18 +51,19 @@ class Product {
     const db = getDb();
     return db
       .collection("products")
-      .find(prodId)
-      .then({ _id: prodId })
+      .find({ _id: new mongoDb.ObjectID(prodId) })
       .next()
-      .then((product) => {
+      .then(product => {
         console.log(product);
         return product;
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       });
   }
 }
+
+module.exports = Product;
 
 // const getProductsFromFile = cb => {
 //   fs.readFile(p, (err, fileContent) => {
@@ -114,5 +116,3 @@ class Product {
 //     })
 //   }
 // };
-
-module.exports = Product;
