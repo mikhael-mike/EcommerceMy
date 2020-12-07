@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 
 mongoose
   .connect(
-    "mongodb+srv://mike:xC8uHDHK14YZczdR@cluster0.h9zv6.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    "mongodb+srv://mike:xC8uHDHK14YZczdR@cluster0.h9zv6.mongodb.net/shop?retryWrites=true&w=majority"
   )
   .then((result) => {
     app.listen(3000);
